@@ -2,8 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { translations } from "../../../lib/translations";
-import type { Locale } from "../../../middleware";
+import { translations } from "@/lib/translations";
+import type { Locale } from "@/middleware";
 
 interface BlogProps {
   lang: Locale;
@@ -32,7 +32,7 @@ export default function Blog({ lang, t }: BlogProps) {
     },
     {
       slug: "php-migration",
-      title: "Migrating from PHP to Modern JavaScript",
+      title: "Migrating from Wardpress to Modern JavaScript",
       excerpt:
         "A comprehensive guide to modernizing legacy PHP applications with Next.js and TypeScript.",
       date: "2024-01-10",
@@ -76,12 +76,31 @@ export default function Blog({ lang, t }: BlogProps) {
   return (
     <section
       id="blog"
-      className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900"
+      className="relative py-20 sm:py-24 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #050B18 0%, #07111F 30%, #0B1F2A 60%, #07111F 100%)",
+      }}
     >
       {/* Background decorative elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-10 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl" />
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 right-10 w-72 h-72 rounded-full opacity-[0.08]"
+          style={{
+            background: "radial-gradient(circle, #2563EB 0%, transparent 70%)",
+          }}
+        />
+        <div className="absolute bottom-10 left-10 w-64 h-64 rounded-full opacity-[0.06]"
+          style={{
+            background: "radial-gradient(circle, #7C3AED 0%, transparent 70%)",
+          }}
+        />
+        {/* Grid pattern overlay */}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px)`,
+            backgroundSize: "60px 60px",
+          }}
+        />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto">
@@ -93,10 +112,10 @@ export default function Blog({ lang, t }: BlogProps) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-4" style={{ color: "#F8FAFC" }}>
             {t.blog?.title}
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl max-w-2xl mx-auto" style={{ color: "#94A3B8" }}>
             {t.blog?.subtitle}
           </p>
         </motion.div>
@@ -135,15 +154,47 @@ export default function Blog({ lang, t }: BlogProps) {
               <motion.article
                 key={post.slug}
                 variants={itemVariants}
-                whileHover={{ y: -5 }}
-                whileTap={{ scale: 0.95 }}
-                className="glass-card rounded-2xl overflow-hidden hover:shadow-xl transition-shadow"
+                className="group relative rounded-2xl transition-all duration-500 cursor-pointer hover:-translate-y-1"
+                style={{
+                  background: "rgba(255,255,255,0.04)",
+                  border: "1px solid rgba(255,255,255,0.08)",
+
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.boxShadow = "0 0 30px rgba(59,130,246,0.15), 0 0 60px rgba(124,58,237,0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.boxShadow = "none";
+                }}
               >
+                {/* Gradient border glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(37,99,235,0.1), rgba(124,58,237,0.1))",
+                    margin: "-1px",
+                  }}
+                />
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: "1px solid rgba(59,130,246,0.3)",
+                  }}
+                />
+
                 {/* Post image placeholder */}
-                <div className="h-48 bg-gradient-to-br from-blue-500/20 to-purple-500/20 relative overflow-hidden">
+                <div className="relative z-10 h-48 bg-liner-to-br from-blue-500/20 to-purple-500/20 rounded-t-2xl overflow-hidden">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="glass-card px-6 py-3 rounded-lg">
-                      <span className="text-xl font-bold text-gray-700 dark:text-gray-500">
+                    <div
+                      className="px-6 py-3 rounded-lg transition-all duration-300 group-hover:scale-110"
+                      style={{
+                        background: "rgba(255,255,255,0.06)",
+                        border: "1px solid rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      <span className="text-xl font-bold" style={{ color: "#94A3B8" }}>
                         {post.image.toUpperCase()}
                       </span>
                     </div>
@@ -151,28 +202,36 @@ export default function Blog({ lang, t }: BlogProps) {
                 </div>
 
                 {/* Post content */}
-                <div className="p-6">
-                  <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-500 mb-4">
+                <div className="relative z-10 p-6">
+                  <div className="flex items-center gap-4 text-sm mb-4" style={{ color: "#64748B" }}>
                     <time>{post.date}</time>
                     <span>•</span>
                     <span>{post.readTime}</span>
                   </div>
 
                   <Link href={`/${lang}/blog/${post.slug}`}>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 hover:text-blue-500 dark:hover:text-blue-400 transition-colors">
+                    <h3
+                      className="text-xl font-bold mb-3 transition-colors duration-300 group-hover:text-blue-400"
+                      style={{ color: "#F8FAFC" }}
+                    >
                       {displayPost.title}
                     </h3>
                   </Link>
 
-                  <p className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-sm sm:text-base mb-4 leading-relaxed" style={{ color: "#94A3B8" }}>
                     {displayPost.excerpt}
                   </p>
 
                   <Link
                     href={`/${lang}/blog/${post.slug}`}
-                    className="inline-flex items-center text-blue-600 dark:text-blue-400 font-semibold hover:underline"
+                    className="inline-flex items-center font-semibold transition-all duration-300 group-hover:gap-2"
+                    style={{ color: "#3B82F6" }}
                   >
                     {t.blog?.readMore}
+                    <svg className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M5 12h14" />
+                      <path d="m12 5 7 7-7 7" />
+                    </svg>
                   </Link>
                 </div>
               </motion.article>
