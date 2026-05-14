@@ -137,9 +137,9 @@ export default function Blog({ lang, t }: BlogProps) {
                   "Cum instrumentele AI precum Gemini API revoluționează modul în care construim aplicații web moderne.",
               },
               {
-                title: "Migrarea de la PHP la JavaScript Modern",
+                title: "Modernizing Legacy Web Applications",
                 excerpt:
-                  "Un ghid complet pentru modernizarea aplicațiilor PHP legacy cu Next.js și TypeScript.",
+                  "Un ghid complet pentru modernizarea aplicațiilor legacy cu Next.js și TypeScript.",
               },
               {
                 title: "E-commerce Enterprise cu Next.js",
