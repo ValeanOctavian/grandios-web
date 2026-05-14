@@ -5,7 +5,7 @@ export const translations = {
       home: "Home",
       services: "Services",
       portfolio: "Portfolio",
-      experience: "Experience",
+      aboutUs: "About Us",
       blog: "Blog",
       contact: "Contact",
     },
@@ -120,8 +120,66 @@ export const translations = {
         },
       },
     },
-    // Experience
-    experience: {
+    // About - About Us
+    about: {
+      badge: "ABOUT US",
+      title: "About Us",
+      subtitle: "We build modern digital products for companies that want more than just a simple website.",
+      cards: {
+        whoWeAre: {
+          title: "Who We Are",
+          text: "Grandios Web is a young company, founded in 2025, but built on solid experience accumulated since 2017. We combine strategic thinking with modern technologies to deliver digital solutions that make a difference.",
+        },
+        whatWeOffer: {
+          title: "What We Offer",
+          items: [
+            "Modern, high-performance websites",
+            "Custom web applications",
+            "iOS & Android mobile apps",
+            "Technical consultancy & software architecture",
+          ],
+        },
+        whyChooseUs: {
+          title: "Why Choose Us",
+          items: [
+            "Practical experience since 2017 in real projects",
+            "Scalable, secure, results-driven solutions",
+            "Transparent communication & long-term partnerships",
+            "Attention to detail & high quality standards",
+          ],
+        },
+        aboutUs: {
+          title: "The Experience Behind the Company",
+          text: "Although Grandios Web was founded in 2025, behind the company there are over 8 years of experience in web and mobile development, accumulated in real projects for clients across various industries.",
+          badge: "8+ years",
+          badgeText: "of practical experience in digital development & enterprise solutions",
+        },
+      },
+      howWeWork: {
+        title: "How We Work",
+        subtitle: "A clear, collaborative, results-driven process.",
+        steps: [
+          {
+            title: "Discussion",
+            text: "We understand your business needs and objectives.",
+          },
+          {
+            title: "Planning",
+            text: "We define the solution, architecture, and work plan.",
+          },
+          {
+            title: "Design & Development",
+            text: "We design and develop with modern technologies.",
+          },
+          {
+            title: "Launch & Support",
+            text: "We launch safely and provide ongoing support.",
+          },
+        ],
+      },
+    },
+    // aboutUs
+    aboutUs: {
       title: "Our Journey",
       subtitle: "8 years of innovation and growth",
       timeline: {
@@ -179,7 +237,7 @@ export const translations = {
       home: "Acasă",
       services: "Servicii",
       portfolio: "Portofoliu",
-      experience: "Experiență",
+      aboutUs: "Despre noi",
       blog: "Blog",
       contact: "Contact",
     },
@@ -294,7 +352,64 @@ export const translations = {
         },
       },
     },
-    experience: {
+    about: {
+      badge: "DESPRE NOI",
+      title: "Despre noi",
+      subtitle: "Construim produse digitale moderne pentru companii care vor mai mult decât un simplu website.",
+      cards: {
+        whoWeAre: {
+          title: "Cine suntem",
+          text: "Grandios Web este o companie tânără, fondată în 2025, dar construită pe o experiență solidă acumulată din 2017. Îmbinăm gândirea strategică cu tehnologiile moderne pentru a livra soluții digitale care fac diferența.",
+        },
+        whatWeOffer: {
+          title: "Ce oferim",
+          items: [
+            "Website-uri moderne și performante",
+            "Aplicații web personalizate",
+            "Aplicații mobile iOS & Android",
+            "Consultanță tehnică și arhitectură software",
+          ],
+        },
+        whyChooseUs: {
+          title: "De ce să ne alegi",
+          items: [
+            "Experiență practică din 2017 în proiecte reale",
+            "Soluții scalabile, sigure și orientate pe rezultate",
+            "Comunicare transparentă și parteneriate pe termen lung",
+            "Atenție la detalii și standarde de calitate ridicate",
+          ],
+        },
+        aboutUs: {
+          title: "Experiența din spatele companiei",
+          text: "Deși Grandios Web a fost fondată în 2025, în spatele companiei există peste 8 ani de experiență în dezvoltare web și mobile, acumulată în proiecte reale pentru clienți din diverse industrii.",
+          badge: "8+ ani",
+          badgeText: "de experiență practică în dezvoltare digitală și soluții enterprise",
+        },
+      },
+      howWeWork: {
+        title: "Cum lucrăm",
+        subtitle: "Un proces clar, colaborativ și orientat pe rezultate.",
+        steps: [
+          {
+            title: "Discuție",
+            text: "Înțelegem nevoile și obiectivele afacerii tale.",
+          },
+          {
+            title: "Planificare",
+            text: "Definim soluția, arhitectura și planul de lucru.",
+          },
+          {
+            title: "Design & Development",
+            text: "Proiectăm și dezvoltăm cu tehnologii moderne.",
+          },
+          {
+            title: "Lansare & Suport",
+            text: "Lansăm în siguranță și oferim suport continuu.",
+          },
+        ],
+      },
+    },
+    aboutUs: {
       title: "Experienta in spatele Grandios Web",
       subtitle: "8 ani de inovație și creștere",
       timeline: {
@@ -347,8 +462,6 @@ export const translations = {
     },
   } as const,
 };
-
-// Experience
 
 export type TranslationKey = typeof translations;
 export type Lang = keyof TranslationKey;

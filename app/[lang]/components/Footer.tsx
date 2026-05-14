@@ -54,7 +54,7 @@ export default function Footer({ lang, t }: FooterProps) {
                 { id: "home", label: t.nav.home },
                 { id: "services", label: t.nav.services },
                 { id: "portfolio", label: t.nav.portfolio },
-                { id: "experience", label: t.nav.experience },
+                { id: "aboutUs", label: t.nav.aboutUs },
                 { id: "blog", label: t.nav.blog },
                 { id: "contact", label: t.nav.contact },
               ].map((item) => (

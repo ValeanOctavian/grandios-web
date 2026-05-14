@@ -4,7 +4,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Services from './components/Services'
 import Portfolio from './components/Portfolio'
-import Experience from './components/Experience'
+import About from './components/About'
 import Blog from './components/Blog'
 import Newsletter from './components/Newsletter'
 import Contact from './components/Contact'
@@ -19,7 +19,7 @@ interface HomePageProps {
 
 export default async function HomePage({ params }: HomePageProps) {
   const { lang } = await params
-  const t = translations[lang]
+  const t = translations[lang] as typeof translations.en
 
   const whatsappMessage = lang === 'en'
     ? 'Hello! I would like more information about your services.'
@@ -35,7 +35,7 @@ export default async function HomePage({ params }: HomePageProps) {
         <Hero lang={lang} t={t} />
         <Services lang={lang} t={t} />
         <Portfolio lang={lang} t={t} />
-        <Experience lang={lang} t={t} />
+        <About lang={lang} t={t} />
         <Blog lang={lang} t={t} />
         <Newsletter lang={lang} t={t} />
         <Contact lang={lang} t={t} />

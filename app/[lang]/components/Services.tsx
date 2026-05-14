@@ -64,7 +64,7 @@ export default function Services({ lang, t }: ServicesProps) {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
         damping: 15,
       },
@@ -100,7 +100,7 @@ export default function Services({ lang, t }: ServicesProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const serviceName = service.id as keyof typeof translations.en.services
-            const serviceData = t.services[serviceName]
+            const serviceData = t.services[serviceName] as { title: string; description: string }
             
             return (
               <motion.div

@@ -56,7 +56,7 @@ export default function Newsletter({ lang, t }: NewsletterProps) {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 15,
       },
@@ -112,7 +112,7 @@ export default function Newsletter({ lang, t }: NewsletterProps) {
               disabled={isSubmitting}
               className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
-              {isSubmitting ? t.newsletter?.submitting : t.newsletter?.submit}
+              {isSubmitting ? (lang === 'en' ? 'Sending...' : 'Se trimite...') : t.newsletter?.submit}
             </button>
           </div>
 

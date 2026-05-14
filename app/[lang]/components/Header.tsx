@@ -25,7 +25,7 @@ export default function Header({ lang, t }: HeaderProps) {
       setIsScrolled(window.scrollY > 50)
 
       // Update active section based on scroll position
-      const sections = ['home', 'services', 'portfolio', 'experience', 'blog', 'contact']
+      const sections = ['home', 'services', 'portfolio', 'aboutUs', 'blog', 'contact']
       const scrollPosition = window.scrollY + 100
 
       for (const section of sections) {
@@ -69,7 +69,7 @@ export default function Header({ lang, t }: HeaderProps) {
     { id: 'home', label: t.nav.home },
     { id: 'services', label: t.nav.services },
     { id: 'portfolio', label: t.nav.portfolio },
-    { id: 'experience', label: t.nav.experience },
+    { id: 'aboutUs', label: t.nav.aboutUs },
     { id: 'blog', label: t.nav.blog },
     { id: 'contact', label: t.nav.contact },
   ]
@@ -88,7 +88,7 @@ export default function Header({ lang, t }: HeaderProps) {
           {/* Logo */}
           <Link
             href={`/${lang}#home`}
-            onClick={(e) => handleSmoothScroll(e as any, 'home')}
+            onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleSmoothScroll(e, 'home')}
             className=" text-2xl font-bold text-gray-900
                         transition-all duration-300
                         hover:bg-gradient-to-r hover:from-cyan-400 hover:via-blue-500 hover:to-fuchsia-500

@@ -66,7 +66,7 @@ export default function Blog({ lang, t }: BlogProps) {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         stiffness: 100,
         damping: 15,
       },
@@ -133,7 +133,7 @@ export default function Blog({ lang, t }: BlogProps) {
 
             return (
               <motion.article
-                key={post.id}
+                key={post.slug}
                 variants={itemVariants}
                 whileHover={{ y: -5 }}
                 whileTap={{ scale: 0.95 }}
