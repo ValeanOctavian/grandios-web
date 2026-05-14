@@ -69,6 +69,7 @@ export const translations = {
           tech: ["React Native", "PHP", "MySQL", "Google Maps"],
           dates: "Oct 2019 – Feb 2020",
           company: "Just Plus",
+          image: 'image1'
         },
         project2: {
           title: "Event Ticketing Platform",
@@ -77,6 +78,7 @@ export const translations = {
           tech: ["ReactJS", "PHP", "MySQL", "Stripe", "MaterialUI", "Bootstrap", "Google Maps"],
           dates: "Feb 2020 – Apr 2021",
           company: "Just Plus",
+          image: 'image2'
         },
         project3: {
           title: "Multi-Brand Fashion E-commerce",
@@ -85,6 +87,7 @@ export const translations = {
           tech: ["Angular 9+", "TypeScript", "RxJS", "MaterialUI", "SSR", "SCSS", "i18N"],
           dates: "2021-2023",
           company: "Accesa IT Systems",
+          image: 'image3'
         },
         project4: {
           title: "B2B Fashion Platform",
@@ -93,6 +96,7 @@ export const translations = {
           tech: ["Angular", "TypeScript", "RxJS", "Bootstrap", "Devextreme", "i18N", "SCSS"],
           dates: "2022-2024",
           company: "Accesa IT Systems",
+          image: 'image4'
         },
         project5: {
           title: "Sales Planning & Budgeting Tool",
@@ -101,6 +105,7 @@ export const translations = {
           tech: ["Angular", "TypeScript", "RxJS", "Angular Material", "Devextreme", "SCSS"],
           dates: "2022-2024",
           company: "Accesa IT Systems",
+          image: 'image5'
         },
         project6: {
           title: "Textile Ecology & Quality Assurance",
@@ -109,6 +114,7 @@ export const translations = {
           tech: ["Angular", "TypeScript", "RxJS", "Angular Material", "Devextreme", "SCSS"],
           dates: "2022-2024",
           company: "Accesa IT Systems",
+          image: 'image6'
         },
         project7: {
           title: "Preorder & Collection Management",
@@ -117,6 +123,7 @@ export const translations = {
           tech: ["Angular", "TypeScript", "RxJS", "Devextreme", "Angular Material", "SCSS", "i18N"],
           dates: "2022-2024",
           company: "Accesa IT Systems",
+          image: 'image7'
         },
       },
     },

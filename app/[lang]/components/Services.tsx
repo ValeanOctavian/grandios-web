@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
-import { useRef } from 'react'
+import {useRef, useState} from 'react'
 import { translations } from '../../../lib/translations'
 import type { Locale } from '../../../middleware'
 
@@ -70,7 +70,40 @@ export default function Services({ lang, t }: ServicesProps) {
       },
     },
   }
+  const [transformStyle, setTransformStyle] = useState<React.CSSProperties>({
+    transform: 'translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)',
+  });
 
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect();
+
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const translateX = ((x - centerX) / centerX) * 20;
+    const translateY = ((y - centerY) / centerY) * 20;
+
+    const rotateX = ((y - centerY) / centerY) * -12;
+    const rotateY = ((x - centerX) / centerX) * 12;
+
+    setTransformStyle({
+      transform: `
+        translateX(${translateX}px)
+        translateY(${translateY}px)
+        rotateX(${rotateX}deg)
+        rotateY(${rotateY}deg)
+      `,
+    });
+  };
+
+  const handleMouseLeave = () => {
+    setTransformStyle({
+      transform: 'translateX(0px) translateY(0px) rotateX(0deg) rotateY(0deg)',
+    });
+  };
   return (
     <section id="services" className="relative py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Background decorative elements */}
@@ -95,13 +128,28 @@ export default function Services({ lang, t }: ServicesProps) {
             {t.services.subtitle}
           </p>
         </motion.div>
-
+        {/*<img src={'/assets/images.png'} alt={'name'} />*/}
+        <div
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className="inline-block"
+            style={{
+              perspective: '1000px',
+            }}
+        >
+          <img
+              src="/assets/images.png"
+              alt="name"
+              className="transition-transform duration-150 ease-out will-change-transform"
+              style={transformStyle}
+          />
+        </div>
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => {
             const serviceName = service.id as keyof typeof translations.en.services
             const serviceData = t.services[serviceName] as { title: string; description: string }
-            
+
             return (
               <motion.div
                 key={service.id}

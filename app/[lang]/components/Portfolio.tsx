@@ -19,14 +19,15 @@ export default function Portfolio({ lang, t }: PortfolioProps) {
   const projects: Array<{
     id: ProjectKey
     category: 'enterprise' | 'ecommerce' | 'mobile'
+    image: string
   }> = [
-    { id: 'project1', category: 'mobile' },
-    { id: 'project2', category: 'ecommerce' },
-    { id: 'project3', category: 'enterprise' },
-    { id: 'project4', category: 'ecommerce' },
-    { id: 'project5', category: 'enterprise' },
-    { id: 'project6', category: 'enterprise' },
-    { id: 'project7', category: 'enterprise' },
+    {image: '/assets/react-native-migration.png',id: 'project1', category: 'mobile' },
+    {image: '/assets/events.png',id: 'project2', category: 'ecommerce' },
+    {image: '',id: 'project3', category: 'enterprise' },
+    {image: '',id: 'project4', category: 'ecommerce' },
+    {image: '/assets/budgeting-and-forecasting.png',id: 'project5', category: 'enterprise' },
+    {image: '/assets/textile-quality.png',id: 'project6', category: 'enterprise' },
+    {image: '/assets/preorder.png',id: 'project7', category: 'enterprise' },
   ]
 
   const filteredProjects = selectedFilter === 'all'
@@ -130,21 +131,45 @@ export default function Portfolio({ lang, t }: PortfolioProps) {
                 animate="visible"
                 initial="hidden"
                 exit="hidden"
-                whileHover={{ scale: 1.02, y: -5 }}
-                whileTap={{ scale: 0.98 }}
-                className="glass-card rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl"
+                className="group relative glass-card rounded-2xl cursor-pointer transition-all duration-500 hover:-translate-y-1"
                 onClick={() => setSelectedProject(projectData.title)}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.boxShadow = "0 8px 32px 0 rgba(0, 0, 0, 0.1), 0 0 30px rgba(59,130,246,0.15), 0 0 60px rgba(124,58,237,0.1)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.boxShadow = "0 8px 32px 0 rgba(0, 0, 0, 0.1)";
+                }}
               >
+                {/* Gradient border glow on hover */}
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    background: "linear-gradient(135deg, rgba(37,99,235,0.1), rgba(124,58,237,0.1))",
+                    margin: "-1px",
+                  }}
+                />
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    border: "1px solid rgba(59,130,246,0.3)",
+                  }}
+                />
+
+                <div className="relative z-10">
                   {/* Project image placeholder */}
-                  <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 relative overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="glass-card px-6 py-3 rounded-lg">
-                        <div className="text-2xl font-bold text-gray-700 dark:text-gray-200">
-                          Project {project.id.replace('project', '')}
-                        </div>
-                      </div>
-                    </div>
+
+                  <div className="h-48 bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-600 rounded-t-2xl overflow-hidden">
+                    <img src={project.image} alt={project.id} />
+                    {/*<div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20" />*/}
+                    {/*<div className="absolute inset-0 flex items-center justify-center">*/}
+                    {/*  <div className="glass-card px-6 py-3 rounded-lg">*/}
+                    {/*    <div className="text-2xl font-bold text-gray-700 dark:text-gray-200">*/}
+                    {/*      Project {project.id.replace('project', '')}*/}
+                    {/*    </div>*/}
+                    {/*  </div>*/}
+                    {/*</div>*/}
                   </div>
 
                   {/* Project content */}
@@ -167,6 +192,7 @@ export default function Portfolio({ lang, t }: PortfolioProps) {
                         </span>
                       ))}
                     </div>
+                  </div>
                   </div>
                 </motion.div>
               )
