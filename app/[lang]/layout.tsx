@@ -4,7 +4,7 @@ import { LangSetter } from './components/LangSetter'
 interface LangLayoutProps {
   children: React.ReactNode
   params: Promise<{
-    lang: 'en' | 'ro'
+    lang: string
   }>
 }
 
